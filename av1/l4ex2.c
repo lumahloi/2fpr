@@ -1,3 +1,6 @@
+/*Dada uma string s, desenvolver uma função
+que determine se s é ou não um palíndromo.*/
+
 #include <stdio.h>
 #include <string.h>
 
@@ -10,7 +13,7 @@ int main()
 	printf("\nInsira sua string: ");
 	gets(minhaString);
 	
-	if(!palindromo(minhaString))
+	if(palindromo(minhaString))
 	{
 		printf("\nA string '%s' eh um palindromo", minhaString);
 	}
@@ -23,21 +26,17 @@ int main()
 
 int palindromo(char string[])
 {
-	// criar um novo vetor igual a 'string' porem dispor os elementos ao contrario
-	int tam = strlen(string);
-	
-	char copia[tam];
-	
-	int i=0, j=(tam-1);
-	
-	for(i=0; i<tam; i++)
+	int i = 0;
+	int j = strlen(string) - 1;
+
+	while (i < j)
 	{
-		copia[i] = string[j];
+		if(string[i] != string[j])
+		{
+			return 0;
+		}
+		i++;
 		j--;
 	}
-	
-	copia[i] = '\0';
-	
-	// comparar os 2 vetores
-	return strcmp(copia, string);
+	return 1;
 }
