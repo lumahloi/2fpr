@@ -1,16 +1,16 @@
+/*Implementar uma função que remova todas as
+ocorrências de determinado caracter em uma
+string.*/
 #include <stdio.h>
 #include <string.h>
 
-void removerOcorrencia(char v1[], char c, int tam, char v2[]);
+void removerOcorrencia(char v1[], char c);
 
 int main()
 {
     char minhaString[] = "Bolo de chocolate";
     int tamanho = strlen(minhaString);
-    char minhaCopia[tamanho];
-    
     char crt;
-    
     int i;
     
     printf("Minha string: ");
@@ -23,31 +23,35 @@ int main()
     scanf("%c", &crt);
     getchar(); // Consumir o caractere de nova linha no buffer
     
-    removerOcorrencia(minhaString, crt, tamanho, minhaCopia);
+    removerOcorrencia(minhaString, crt);
     
     printf("Nova string: ");
     for(i = 0; i < tamanho; i++)
     {
-        printf("%c", minhaCopia[i]);
+        printf("%c", minhaString[i]);
     }
-    
     return 0;    
 }
 
-void removerOcorrencia(char v1[], char c, int tam, char v2[])
+void removerOcorrencia(char v[], char c)
 {
-    int i = 0, j = 0;
+    int i, j;
     
-    do
+    while(v[i])
     {
-        if(v1[j] != c)
+        if(v[i] == c)
         {
-            v2[i] = v1[j];
+            for(j=i; v[j]; j++)
+            {
+                v[j] = v[j+1];
+            }
+
+            v[j] = '\0';
+        }
+        else
+        {
             i++;
         }
-        j++;
-    } while (j < tam);
-    
-    v2[i] = '\0';
+    }
 }
 

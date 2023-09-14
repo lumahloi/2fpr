@@ -66,4 +66,3 @@ int procurarNum(int v[][COL], int N, int L) {
     }
     return 0; 
 }
-
