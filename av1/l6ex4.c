@@ -50,15 +50,12 @@ int verificarCres(int m[LIN][COL])
 		}
 	}
 	
-	//Comparando o último item da linha com o primeiro da linha seguinte
+	//Comparando o ï¿½ltimo item da linha com o primeiro da linha seguinte
 	for(i=0; i < LIN-1; i++)
 	{
-		for(j=1; j < COL; j++)
+		if(m[i][2] > m[i+1][0])
 		{
-			if(m[i][2] > m[i+1][0])
-			{
-				return 0;
-			}
+			return 0;
 		}
 	}
 	return 1;
