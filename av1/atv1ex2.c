@@ -31,7 +31,6 @@ int preencherV2(int v1[], TV2 v2[], int quant) {
             k++;
         }
     }
-
     return k;
 }
 
