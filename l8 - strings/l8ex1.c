@@ -27,7 +27,7 @@ int charDist(char s[], int tam){
 }
 
 void main(){
-	char s[] = "babababababbbbb";
+	char s[] = "paralelepipedo";
 	int tam = strlen(s);
 	
 	int caracteres = charDist(s, tam);

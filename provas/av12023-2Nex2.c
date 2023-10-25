@@ -1,31 +1,50 @@
 #include <stdio.h>
 
-float calDef(int v[], int n1, int n2, int i, int qntd, int soma){
-	if(i <= n2){
-		qntd++;
-		soma += v[i];
-		return calDef(v, n1, n2, i+1, qntd, soma);
-	} else {
-		return (float)soma/qntd;
+void preencherMatriz(int L, int C, int m[L][C]){
+	int i, j;
+	srand(time(NULL));
+	for(i=0; i<L; i++){
+		for(j=0; j<C; j++){
+			m[i][j] = rand()%10;
+		}
 	}
 }
 
-float calcularMedia(int v[], int n1, int n2){
-	int i = n1; //contador
-	int qntd = 0, soma = 0;
-	return calDef(v, n1, n2, i, qntd, soma);
+void exibirMatriz(int L, int C, int m[L][C]){
+	int i, j;
+	for(i=0; i<L; i++){
+		for(j=0; j<C; j++){
+			printf("%-4d", m[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+void criarVetor(int L, int C, int m[L][C]){
+	int vetor[L], i, j, k, quant = 100, soma = 0;
+	
+	for(i=0; i<L; i++){//percorrendo o vetor (que também são as linhas da matriz)
+		for(k=0; k<C; k++){//percorrendo colunas da matriz
+			 soma += (m[i][k] * quant);
+			 quant /= 10;
+		}
+		vetor[i] = soma;
+		soma = 0, quant = 100;
+	}
+	
+	printf("\nvetor: ");
+	for(i=0; i<L; i++){
+		printf("%-5d ", vetor[i]);
+	}
 }
 
 void main(){
-	int vetor[5] = {10, 15, 18, 23, 8};
-	int num1 = 0; //supondo que num1 < num 2
-	int num2 = 1;
-	int tam = 5;
+	int L = 5;
+	int C = 3;
+	int m[L][C];
 	
-	if((num2 > tam-1)||(num1 < 0)){
-		printf("\ninvalido");
-	} else {
-		float res = calcularMedia(vetor, num1, num2);
-		printf("%.2f", res);	
-	}
+	preencherMatriz(L, C, m);
+	exibirMatriz(L, C, m);
+	
+	criarVetor(L, C, m);
 }
