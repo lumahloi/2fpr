@@ -21,7 +21,7 @@ void exibirMatriz(int L, int C, int m[L][C]){
 }
 
 void criarVetor(int L, int C, int m[L][C]){
-	int vetor[L], i, j, k, quant = 100, soma = 0;
+	int vetor[L], i, k, quant = 100, soma = 0;
 	
 	for(i=0; i<L; i++){//percorrendo o vetor (que também são as linhas da matriz)
 		for(k=0; k<C; k++){//percorrendo colunas da matriz
